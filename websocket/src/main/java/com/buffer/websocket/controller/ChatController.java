@@ -26,16 +26,14 @@ public class ChatController {
     @MessageMapping("/chat")
     public void processMessage(@Payload ChatMessage chatMessage) {
         ChatMessage savedMsg = chatMessageService.save(chatMessage);
-        
-        messagingTemplate.convertAndSendToUser(
-                chatMessage.getRecipientId(), "/queue/messages",
-                new ChatNotification(
-                        savedMsg.getId(),
-                        savedMsg.getSenderId(),
-                        savedMsg.getRecipientId(),
-                        savedMsg.getContent()
-                )
-        );
+        ChatNotification c = new ChatNotification(
+                savedMsg.getId(),
+                savedMsg.getSenderId(),
+                savedMsg.getRecipientId(),
+                savedMsg.getContent());
+       // messagingTemplate.convertAndSendToUser(
+       //         chatMessage.getRecipientId(), "/queue/messages",c);
+        messagingTemplate.convertAndSend("/tem/"+chatMessage.getRecipientId()+ "/queue/messages", c);
     }
 
     @GetMapping("/messages/{senderId}/{recipientId}")

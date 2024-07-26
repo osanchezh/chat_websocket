@@ -33,9 +33,12 @@ function connect(event) {
 
 function onConnected() {
     console.log('test onconnected');
-    //stompClient.subscribe(`/user/${nickname}/queue/messages`, onMessageReceived);
-    stompClient.subscribe(`/topic/public`, onMessageReceived);
-
+    stompClient.subscribe(`/tem/${nickname}/queue/messages`, onMessageReceived);
+	stompClient.subscribe(`/user/${nickname}/queue/messages`, onMessageReceived);
+	stompClient.subscribe(`/app/${nickname}/queue/messages`, onMessageReceived);
+    stompClient.subscribe(`/user/public`, onMessageReceived);
+	stompClient.subscribe(`/topic/public`, onMessageReceived);
+	stompClient.subscribe(`/app/public`, onMessageReceived);
     // register the connected user
     stompClient.send("/app/user.addUser",
         {},
@@ -123,6 +126,7 @@ function displayMessage(senderId, content) {
 }
 
 async function fetchAndDisplayUserChat() {
+    console.log('cadena:'+`/messages/${nickname}/${selectedUserId}`);
     const userChatResponse = await fetch(`/messages/${nickname}/${selectedUserId}`);
     const userChat = await userChatResponse.json();
     chatArea.innerHTML = '';
@@ -151,6 +155,7 @@ function sendMessage(event) {
         };
 		console.log("messageContent:"+messageContent);
         stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
+		//stompClient.send("/tem/"+selectedUserId+"/queue/messages", {}, JSON.stringify(chatMessage));
         displayMessage(nickname, messageInput.value.trim());
         messageInput.value = '';
     }

@@ -46,8 +46,8 @@ public class UserController {
         return ResponseEntity.ok(userService.findConnectedUsers());
     }
     
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<User> findUser(@PathVariable String userId) {
-        return ResponseEntity.ok(userService.findUser(userId));
-    }
+    //@GetMapping("/user/{userId}")
+    //public ResponseEntity<User> findUser(@PathVariable String userId) {
+    //    return ResponseEntity.ok(userService.findUser(userId));
+    //}
 }
