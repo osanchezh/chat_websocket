@@ -1,0 +1,2 @@
+https://github.com/ali-bouali/spring-boot-websocket-chat-app/tree/main
+https://www.youtube.com/watch?v=TywlS9iAZCM
