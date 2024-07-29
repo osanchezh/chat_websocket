@@ -179,6 +179,7 @@ async function onMessageReceived(payload) {
     }
 
     if (selectedUserId) {
+		console.log('selected:'+`#${selectedUserId}`);
         document.querySelector(`#${selectedUserId}`).classList.add('active');
     } else {
         messageForm.classList.add('hidden');

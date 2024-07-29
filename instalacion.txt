@@ -1,2 +1,5 @@
 https://github.com/ali-bouali/spring-boot-websocket-chat-app/tree/main
 https://www.youtube.com/watch?v=TywlS9iAZCM
+
+https://www.youtube.com/watch?v=7T-HnTE6v64
+https://github.com/ali-bouali/one-to-one-chat-spring-boot-web-socket/tree/main
